@@ -35,16 +35,92 @@ class FirstScreen extends StatelessWidget {
                 onPressed: () {},
               )
             ]),
-        body: Column(children: [
-          Center(
-            child: SvgPicture.asset(
-              "assets/images/home.svg",
-              height: 100.0,
-              width: 100.0,
+        body: Container(
+          padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+          child: Column(children: [
+            // Center(
+            //   child: SvgPicture.asset(
+            //     "assets/images/home.svg",
+            //     height: 100.0,
+            //     width: 100.0,
+            //   ),
+            // ),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: const Text("Samsung Galaxy J6",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
             ),
-          )
-          // Image.asset("assets/images/utube.png"),
-        ]));
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: const Text(
+                  "Galaxy J6 hadir dengan desain premium, dengan dukungan layar 5.6\" HD+ SuperAMOLED Infinity Display dengan resolusi 720 x 1480 warnanya hidup dan kontrasnya sangat baik. Ini adalah fitur unggulan yang biasanya tidak di dapat pada ponsel sekelas ini. "),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Row(
+                      children: const <Widget>[
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                        Icon(Icons.star)
+                      ],
+                    ),
+                    const Text("178 Reviews")
+                  ]),
+            ),
+            Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Column(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.access_alarm,
+                          color: Colors.green,
+                        ),
+                        Text("PREP:"),
+                        Text("25 Min"),
+                      ],
+                    ),
+                    Column(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.access_alarm,
+                          color: Colors.green,
+                        ),
+                        Text("PREP:"),
+                        Text("25 Min"),
+                      ],
+                    ),
+                    Column(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.access_alarm,
+                          color: Colors.green,
+                        ),
+                        Text("PREP:"),
+                        Text("25 Min"),
+                      ],
+                    )
+                  ]),
+            )
+            // Image.asset("assets/images/utube.png"),
+          ]),
+        ));
   }
 }
 
