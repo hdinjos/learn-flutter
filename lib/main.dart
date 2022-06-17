@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,12 +35,15 @@ class FirstScreen extends StatelessWidget {
                 onPressed: () {},
               )
             ]),
-        body: Column(children: const [
-          UpperText(
-            text: "A title",
-          ),
-          Text("Tes title"),
-          // UpperText(text: "A Title"),
+        body: Column(children: [
+          Center(
+            child: SvgPicture.asset(
+              "assets/images/home.svg",
+              height: 100.0,
+              width: 100.0,
+            ),
+          )
+          // Image.asset("assets/images/utube.png"),
         ]));
   }
 }
