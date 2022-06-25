@@ -22,13 +22,13 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Text Field")),
+        appBar: AppBar(title: const Text("Input")),
         body: Container(
             padding: const EdgeInsets.all(10),
             child: Column(children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: const Text("Text Field OnChange and State",
+                child: const Text("Switch",
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
