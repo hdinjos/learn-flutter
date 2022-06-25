@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 void main() {
   runApp(const MyApp());
@@ -9,68 +9,128 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: "My Jogja", home: TourDetail());
+    return MaterialApp(
+        title: "Button",
+        theme: ThemeData(primarySwatch: Colors.lightGreen),
+        home: const Screen());
   }
 }
 
-class TourDetail extends StatelessWidget {
-  const TourDetail({Key? key}) : super(key: key);
+class Screen extends StatelessWidget {
+  const Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: const Text("Detail")),
-      body: SafeArea(
+        appBar: AppBar(title: const Text("List Button")),
+        body: Container(
+          // alignment: Alignment.center,
+          padding: const EdgeInsets.all(10),
           child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.only(top: 16),
-            child: const Text("Jalan Malioboro",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600)),
-          ),
-          Container(
-              margin: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Column(
-                    children: const <Widget>[
-                      Icon(Icons.date_range_outlined),
-                      SizedBox(height: 8.0),
-                      Text("Open Everyday")
-                    ],
-                  ),
-                  Column(
-                    children: const <Widget>[
-                      Icon(Icons.more_time_rounded),
-                      SizedBox(
-                        height: 8.0,
-                      ),
-                      Text("24 Hours")
-                    ],
-                  ),
-                  Column(
-                    children: const <Widget>[
-                      Icon(Icons.currency_exchange_rounded),
-                      SizedBox(
-                        height: 8.0,
-                      ),
-                      Text("Free")
-                    ],
-                  )
-                ],
-              )),
-          Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
-              child: const Text(
-                "Jalan Malioboro is a major shopping street in Yogyakarta, Indonesia; the name is also used more generally for the neighborhood around the street. It lies north–south axis in the line between Yogyakarta Kraton and Mount Merapi. This is in itself is significant to many of the local population, the north–south orientation between the palace and the volcano being of importance.",
-                textAlign: TextAlign.center,
-              ))
-        ],
-      )),
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text("Elevated Button",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // print("standart press");
+                      },
+                      onLongPress: () {
+                        // print("Long press!");
+                      },
+                      child:
+                          const Text("Enable", style: TextStyle(fontSize: 20)),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const ElevatedButton(
+                      onPressed: null,
+                      child: Text("Disable", style: TextStyle(fontSize: 20)),
+                    )
+                  ],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text("Text Button",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text("Woke Gan"),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text("Outline Button",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                OutlinedButton(
+                  onPressed: () {},
+                  child: const Text("Outlined Button"),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text("Button Icon",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                IconButton(
+                    onPressed: () {},
+                    tooltip: "Add alarm",
+                    icon: const Icon(Icons.add_alarm)),
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text("Dropdown Button",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                const DropDownBtn(),
+              ]),
+        ));
+  }
+}
+
+class DropDownBtn extends StatefulWidget {
+  const DropDownBtn({Key? key}) : super(key: key);
+
+  @override
+  State<DropDownBtn> createState() => _DropDownBtn();
+}
+
+class _DropDownBtn extends State<DropDownBtn> {
+  String? dropdownVal;
+  List<String> menu = ["One", "Two", "Three"];
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownVal,
+      hint: const Text("Select a number"),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownVal = newValue;
+        });
+      },
+      items: menu.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }
