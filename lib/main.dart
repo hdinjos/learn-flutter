@@ -24,113 +24,47 @@ class Screen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text("List Button")),
         body: Container(
-          // alignment: Alignment.center,
-          padding: const EdgeInsets.all(10),
-          child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Elevated Button",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // print("standart press");
-                      },
-                      onLongPress: () {
-                        // print("Long press!");
-                      },
-                      child:
-                          const Text("Enable", style: TextStyle(fontSize: 20)),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const ElevatedButton(
-                      onPressed: null,
-                      child: Text("Disable", style: TextStyle(fontSize: 20)),
-                    )
-                  ],
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Text Button",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text("Woke Gan"),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Outline Button",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                OutlinedButton(
-                  onPressed: () {},
-                  child: const Text("Outlined Button"),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Button Icon",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                IconButton(
-                    onPressed: () {},
-                    tooltip: "Add alarm",
-                    icon: const Icon(Icons.add_alarm)),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Dropdown Button",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                const DropDownBtn(),
-              ]),
-        ));
+            // alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.center,
+                    child: const Text("Text Field",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
+                  ),
+                  const StandardInput()
+                ])));
   }
 }
 
-class DropDownBtn extends StatefulWidget {
-  const DropDownBtn({Key? key}) : super(key: key);
+class StandardInput extends StatefulWidget {
+  const StandardInput({Key? key}) : super(key: key);
 
   @override
-  State<DropDownBtn> createState() => _DropDownBtn();
+  State<StandardInput> createState() => _StandardInput();
 }
 
-class _DropDownBtn extends State<DropDownBtn> {
-  String? dropdownVal;
-  List<String> menu = ["One", "Two", "Three"];
+class _StandardInput extends State<StandardInput> {
+  String _text = '';
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownVal,
-      hint: const Text("Select a number"),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownVal = newValue;
-        });
-      },
-      items: menu.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+    return Column(
+      children: [
+        TextField(
+          decoration: const InputDecoration(labelText: "Some Text"),
+          onChanged: (value) {
+            setState(() {
+              _text = value;
+            });
+          },
+        ),
+        Text("This is : $_text")
+      ],
     );
   }
 }
