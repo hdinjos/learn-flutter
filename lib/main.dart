@@ -28,44 +28,53 @@ class Screen extends StatelessWidget {
             child: Column(children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: const Text("Switch",
+                child: const Text("Radio",
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
-              const SwitchInput(),
+              const RadioInput(),
             ])));
   }
 }
 
-class SwitchInput extends StatefulWidget {
-  const SwitchInput({Key? key}) : super(key: key);
+class RadioInput extends StatefulWidget {
+  const RadioInput({Key? key}) : super(key: key);
 
   @override
-  State<SwitchInput> createState() => _SwitchInput();
+  State<RadioInput> createState() => _RadioInput();
 }
 
-class _SwitchInput extends State<SwitchInput> {
-  bool _onFire = true;
+class _RadioInput extends State<RadioInput> {
+  String _language = "Go";
+  final List<String> _languages = ["Javascript", "Dart", "Go"];
+
+  void showSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("$_language selected"),
+      duration: const Duration(seconds: 1),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Switch(
-          value: _onFire,
-          onChanged: (value) {
-            setState(() {
-              _onFire = value;
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(_onFire ? "Open the door" : "Close the door"),
-                duration: const Duration(seconds: 1),
-              ));
-            });
-          },
-        ),
-        Text(_onFire ? "Availble Text" : "No Text"),
-      ],
+      mainAxisSize: MainAxisSize.min,
+      children: _languages.map<ListTile>((String val) {
+        return ListTile(
+          leading: Radio(
+            value: val,
+            groupValue: _language,
+            onChanged: (Object? value) {
+              setState(() {
+                _language = val;
+                showSnackBar();
+              });
+            },
+          ),
+          title: Text(val),
+        );
+      }).toList(),
     );
   }
 }
