@@ -33,48 +33,39 @@ class Screen extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
-              const RadioInput(),
+              const CheckboxInput(),
             ])));
   }
 }
 
-class RadioInput extends StatefulWidget {
-  const RadioInput({Key? key}) : super(key: key);
+class CheckboxInput extends StatefulWidget {
+  const CheckboxInput({Key? key}) : super(key: key);
 
   @override
-  State<RadioInput> createState() => _RadioInput();
+  State<CheckboxInput> createState() => _CheckboxInput();
 }
 
-class _RadioInput extends State<RadioInput> {
-  String _language = "Go";
-  final List<String> _languages = ["Javascript", "Dart", "Go"];
+class _CheckboxInput extends State<CheckboxInput> {
+  bool _check = false;
 
   void showSnackBar() {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("$_language selected"),
+      content: Text("$_check selected"),
       duration: const Duration(seconds: 1),
     ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: _languages.map<ListTile>((String val) {
-        return ListTile(
-          leading: Radio(
-            value: val,
-            groupValue: _language,
-            onChanged: (Object? value) {
-              setState(() {
-                _language = val;
-                showSnackBar();
-              });
-            },
-          ),
-          title: Text(val),
-        );
-      }).toList(),
+    return ListTile(
+      leading: Checkbox(
+          value: _check,
+          onChanged: (bool? value) {
+            setState(() {
+              _check = value ?? false;
+            });
+          }),
+      title: const Text("User Agreement"),
     );
   }
 }
