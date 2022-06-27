@@ -14,6 +14,8 @@ class TourDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var generalFontStyle = TextStyle(fontFamily: "Oxygen");
+
     return Scaffold(
       // appBar: AppBar(title: const Text("Detail")),
       body: SingleChildScrollView(
@@ -25,7 +27,10 @@ class TourDetail extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               child: const Text("Jalan Malioboro",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30, fontFamily: "Staatliches")),
+                  style: TextStyle(
+                      fontSize: 30,
+                      // fontWeight: FontWeight.w600,
+                      fontFamily: "Staatliches")),
             ),
             Container(
                 margin: const EdgeInsets.symmetric(vertical: 16.0),
@@ -88,7 +93,39 @@ class TourDetail extends StatelessWidget {
                         child: Image.network(item),
                       ),
                     );
-                  }).toList()),
+                  }).toList()
+                  // <Widget>[
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(5.0),
+                  //     child: ClipRRect(
+                  //       borderRadius: BorderRadius.circular(10.0),
+                  //       child: Image.network(
+                  //           "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRJJudah3m6m21W96KKk4jfLv1wcAOi3xzVL35WRcdwBTX7UwytNCzPYOnzdg0MIQg73U7CLVDDbYPzMW2aWaVLQg"),
+                  //     ),
+                  //   ),
+                  //   Padding(
+                  //       padding: const EdgeInsets.all(5.0),
+                  //       child: ClipRRect(
+                  //         borderRadius: BorderRadius.circular(10.0),
+                  //         child: Image.network(
+                  //             "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRhiVaKZdkKkzf152kiVSn5YSSg8XbBSlq6KQzMJ69LsYwLBX_S3BSnRubMgWMTEoxW6ZzfBVbIsAcpcHRBvI3MAA"),
+                  //       )),
+                  //   Padding(
+                  //       padding: const EdgeInsets.all(5.0),
+                  //       child: ClipRRect(
+                  //         borderRadius: BorderRadius.circular(10.0),
+                  //         child: Image.network(
+                  //             "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSJSyf2R1Y7YiSlcH5vmUS52DsYwpg7-qk0mGEu8MsELsPAiFhtCYv3e6klSVZ6u_dL4PVTPXg626N_VRcYjE4OcA"),
+                  //       )),
+                  //   Padding(
+                  //       padding: const EdgeInsets.all(5.0),
+                  //       child: ClipRRect(
+                  //         borderRadius: BorderRadius.circular(10.0),
+                  //         child: Image.network(
+                  //             "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTxz01FhaaKa0bkl2NOlxTiHRNnHmxp37VjBnIHOGmFpEeMDBLr1aM-nZEdb_lLdn4DwAqm8f4pEhbiIFTRMZvduQ"),
+                  //       )),
+                  // ],
+                  ),
             )
           ],
         ),
